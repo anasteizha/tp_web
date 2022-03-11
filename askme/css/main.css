@@ -56,17 +56,25 @@ main > .container {
     text-decoration: none;
     background-color: #fabd08;
 }
-.blue {
+.gray {
     color: #fff;
     text-decoration: none;
-    background-color: rgb(17, 39, 109);
+    background-color: gray;
 }
 
-a:link {
+a:link, a:visited {
     color:rgb(17, 39, 109);
 }
 
 a:hover {
     color: rgb(96, 123, 212);
+}
+
+.form-ans {
+    margin-top:20px;
+    margin-right: 0px;
+}
+.btn-answer {
+    margin-top:20px;
 }
 

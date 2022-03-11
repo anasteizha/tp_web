@@ -72,15 +72,26 @@
             <div class="row">
                 <div class="col-9">
                     <div class="row">
-                        <div class="col-4">
-                            <h2 class="mt-5">New questions</h2>
+                        <div class="col-2">
+                            <img class="avatar-question mt-5" src="img/picture.jpg" alt="">
+                            <button type="button" class="btn btn-outline-success btn-sm">Like<br>20</button>
+                            <button type="button" class="btn btn-outline-danger btn-sm"
+                                style="margin-left: 2px">Dislike<br>10</button>
                         </div>
-                        <div class="col-4">
-                            <h5 class="mt-5" style="padding-top: 10px"><a href="questions.html" target="_block">Popular
-                                    questions</a>
-                            </h5>
+                        <div class="col-10">
+                            <h3 class="mt-5">Question?</h3>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+                                has been the industry's standard dummy text ever since the 1500s, when an unknown
+                                printer took a galley of type and scrambled it to make a type specimen book. It has
+                                survived not only five centuries</p>
+
+                            <span class="badge bg-dark">Tags:</span>
+                            <a href="tag.html">Python</a>
+                            <a href="tag.html">Java</a>
+                            <a href="tag.html">С++</a>
                         </div>
                     </div>
+                    <hr size="4" style="margin-top: 80px">
                     <div class="row question">
                         <div class="col-2">
                             <img class="avatar-question" src="img/picture.jpg" alt="">
@@ -89,41 +100,15 @@
                                 style="margin-left: 2px">Dislike<br>10</button>
                         </div>
                         <div class="col-10">
-                            <h3><a href="question.html" target="_block">Question 1</a></h3>
                             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
                                 has been the industry's standard dummy text ever since the 1500s, when an unknown
                                 printer took a galley of type and scrambled it to make a type specimen book. It has
                                 survived not only five centuries</p>
-                            <!-- <a href="answers.html" target="_block">Answers (2)</a> -->
 
-                            <a href="answers.html" target="_block" class="btn btn-light">Answers (2)</a>
-                            <span class="badge bg-dark" style="margin-left: 300px">Tags:</span>
-                            <a href="tag.html">Python</a>
-                            <a href="tag.html">Java</a>
-                            <a href="tag.html">С++</a>
-                        </div>
-                    </div>
-
-                    <div class="row question">
-                        <div class="col-2">
-                            <img class="avatar-question" src="img/picture.jpg" alt="">
-                            <button type="button" class="btn btn-outline-success btn-sm">Like<br>20</button>
-                            <button type="button" class="btn btn-outline-danger btn-sm"
-                                style="margin-left: 2px">Dislike<br>10</button>
-                        </div>
-                        <div class="col-10">
-                            <h3><a href="question.html" target="_block">Question 2</a></h3>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                                has been the industry's standard dummy text ever since the 1500s, when an unknown
-                                printer took a galley of type and scrambled it to make a type specimen book. It has
-                                survived not only five centuries</p>
-                            <!-- <a href="answers.html" target="_block">Answers (2)</a> -->
-
-                            <a href="answers.html" target="_block" class="btn btn-light">Answers (2)</a>
-                            <span class="badge bg-dark" style="margin-left: 300px">Tags:</span>
-                            <a href="tag.html">Python</a>
-                            <a href="tag.html">Java</a>
-                            <a href="tag.html">С++</a>
+                            <div class="mb-3 form-check">
+                                <input type="checkbox" class="form-check-input" id="choose">
+                                <label class="form-check-label" for="choose">Correct!</label>
+                            </div>
                         </div>
                     </div>
 
@@ -135,19 +120,28 @@
                                 style="margin-left: 2px">Dislike<br>10</button>
                         </div>
                         <div class="col-10">
-                            <h3><a href="question.html" target="_block">Question 3</a></h3>
                             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
                                 has been the industry's standard dummy text ever since the 1500s, when an unknown
                                 printer took a galley of type and scrambled it to make a type specimen book. It has
                                 survived not only five centuries</p>
 
-                            <a href="answers.html" target="_block" class="btn btn-light">Answers (2)</a>
-                            <span class="badge bg-dark" style="margin-left: 300px">Tags:</span>
-                            <a href="tag.html">Python</a>
-                            <a href="tag.html">Java</a>
-                            <a href="tag.html">С++</a>
+                            <div class="mb-3 form-check">
+                                <input type="checkbox" class="form-check-input" id="choose">
+                                <label class="form-check-label" for="choose">Correct!</label>
+                            </div>
                         </div>
                     </div>
+                    <hr size="4" style="margin-top: 50px">
+                    <div class='row form-ans'>
+                        <form id="new-answer" class="enter-answer">
+                            <div class="mb-3">
+                                <textarea class="form-control form-control-lg" id="TextForm"
+                                    placeholder="Enter your answer here..." rows="4"></textarea>
+                                <button class="btn btn-outline-warning btn-answer" type="submit">Answer</button>
+                            </div>
+                        </form>
+                    </div>
+
                     <nav aria-label="...">
                         <ul class="pagination">
                             <li class="page-item disabled">
