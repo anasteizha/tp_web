@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/main.css">
 
-
     <style>
         .bd-placeholder-img {
             font-size: 1.125rem;
@@ -66,11 +65,34 @@
         </nav>
     </header>
 
+
     <!-- Begin page content -->
     <main class="flex-shrink-0">
         <div class="container">
             <div class="row">
-                <div class="col-9">
+                <div class="col-7" style="margin-left: 150px">
+                    <h2 class="mt-5">New question</h2>
+                    <div class="col-5">
+                        <div class="alert alert-danger" role="alert">
+                            Incorrect input data!
+                        </div>
+                    </div>
+                    <form>
+                        <div class="mb-3 col-8">
+                            <label for="TitleQuestion" class="form-label">Qustion title</label>
+                            <input type="text" class="form-control" placeholder="Your question" id="TitleQuestion" required>
+                        </div>
+                        <div class="mb-3 col-8">
+                            <label for="description" class="form-label">Question text</label>
+                            <textarea class="form-control" placeholder="Description of your question" id="description" rows="3" required></textarea>
+                        </div>
+                        <div class="mb-3 col-8">
+                            <label for="questionTags" class="form-label">Tags</label>
+                            <input type="text" placeholder="Question tags" class="form-control" id="questionTags" aria-describedby="tagsHelp" required>
+                            <div id="tagsHelp" class="form-text">Enter no more than 3 tags. Tags are entered separated by commas.</div>
+                        </div>
+                        <button type="submit" class="btn btn-warning btn-send">ASK</button>
+                    </form>
                 </div>
                 <div class="col-3">
                     <h2 class="mt-5">Popular tags</h2>
