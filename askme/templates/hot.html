@@ -1,0 +1,15 @@
+{% extends "inc/base.html" %}
+{% load static %}
+
+{% block navbar %}
+    {% include "inc/authorized_navbar.html" %}
+{% endblock navbar %}
+
+{% block content %}
+    <h2 class="mt-5">Popular questions</h2>
+    {% for question in page_obj %}
+        {% include "inc/question_tmp.html" %}
+    {% endfor %}
+
+    {% include "inc/pagination.html" %}
+{% endblock content %}

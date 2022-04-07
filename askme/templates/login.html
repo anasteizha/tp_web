@@ -1,0 +1,31 @@
+{% extends "inc/base.html" %}
+{% load static %}
+
+{% block navbar %}
+  {% include "inc/unauthorized_navbar.html" %}
+{% endblock navbar %}
+
+{% block content %}
+  <div class="col-7" style="margin-left: 150px">
+    <h2 class="mt-5">Log in</h2>
+    <div class="col-5">
+      <div class="alert alert-danger" role="alert">
+        Wrong password.
+      </div>
+    </div>
+    <form>
+      <div class="mb-3 col-6">
+        <label for="login" class="form-label">Login</label>
+        <input type="text" class="form-control" id="login" placeholder="Enter your login" required>
+      </div>
+      <div class="mb-3 col-6">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" id="password" placeholder="Enter your password" required>
+      </div>
+      <div class="mb-3">
+        <a href="{% url "signup" %}">Create new account</a>
+      </div>
+      <button type="submit" class="btn btn-primary">Log in</button>
+    </form>
+  </div>
+{% endblock content %}

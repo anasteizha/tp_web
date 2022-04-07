@@ -1,0 +1,24 @@
+{% extends "inc/base.html" %}
+{% load static %}
+
+{% block navbar %}
+    {% include "inc/authorized_navbar.html" %}
+{% endblock navbar %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-4">
+            <h2 class="mt-5">New questions</h2>
+        </div>
+        <div class="col-4">
+            <h5 class="mt-5" style="padding-top: 10px"><a href="{% url "hot" %}">Popular questions</a>
+            </h5>
+        </div>
+    </div>
+
+    {% for question in page_obj %}
+        {% include "inc/question_tmp.html" %}
+    {% endfor %}
+
+    {% include "inc/pagination.html" %}
+{% endblock content %}
