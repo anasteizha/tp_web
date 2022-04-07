@@ -75,9 +75,15 @@
                     </div>
                     </div>
                     <h2 class="mt-5">Best members</h2>
-                    {% for user in best_members %}
-                        <a href="#" class="btn btn-light">{{ user }}</a><br>
-                    {% endfor %}
+                    <ul class="list-group list-group-flush">
+                        {% for user in best_members %}
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                    <div class="fw-bold"><a href="#">{{ user }}</a></div>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
                 </div>
             </div>
         </div>
@@ -96,3 +102,4 @@
 </body>
 
 </html>
+

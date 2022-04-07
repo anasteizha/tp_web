@@ -10,14 +10,14 @@ QUESTIONS = [
         "title": f"Title №{i + 1}",
         "text": f"This is text for question №{i + 1}",
         "number": i,
-        "tags": QUESTION_TAGS,
+        "tags": QUESTION_TAGS
     } for i in range(100)
 ]
 
 ANSWERS = [
     {
         "title": f"Title №{i + 1}",
-        "text": f"This is text for answer №{i + 1}",
+        "text": f"This is text for answer №{i + 1}"
     } for i in range(20)
 ]
 
@@ -74,4 +74,9 @@ def ask(request):
     context = {"popular_tags": POPULAR_TAGS,
             "best_members": BEST_MEMBERS}
     return render(request, "ask.html", context)
+
+def settings(request):
+    context = {"popular_tags": POPULAR_TAGS,
+            "best_members": BEST_MEMBERS}
+    return render(request, "settings.html", context)
 

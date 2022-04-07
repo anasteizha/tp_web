@@ -16,12 +16,12 @@
             <img class="avatar-user" src="{% static "img/picture.jpg" %}" alt="">
             <div class="container">
                 <div class="row navbar-nav">
-                    <a class="nav-link user-name" href="#">Kuznetsova Anastasia</a>
+                    <a class="nav-link user-name" href="{% url "settings" %}">Kuznetsova Anastasia</a>
                 </div>
                 <div class="row">
                     <ul class="navbar-nav me-auto mb-2 mb-md-0">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Settings</a>
+                            <a class="nav-link" href="{% url "settings" %}">Settings</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{% url "login" %}">Log out</a>
@@ -32,3 +32,4 @@
         </div>
     </div>
 </nav>
+

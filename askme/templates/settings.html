@@ -1,0 +1,44 @@
+{% extends "inc/base.html" %}
+{% load static %}
+
+{% block navbar %}
+    {% include "inc/authorized_navbar.html" %}
+{% endblock navbar %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-4">
+            <h2 class="mt-5">Settings</h2>
+        </div>
+    </div>
+
+    <form>
+        <div class="mb-3 row">
+            <label for="login" class="col-sm-2 col-form-label">Login</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="login" value="login">
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="email" class="col-sm-2 col-form-label">Email</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="login" value="email">
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="NickName" class="col-sm-2 col-form-label">Login</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="NickName" value="NickName">
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="avatar" class="col-sm-2 col-form-label">Upload avatar</label>
+            <div class="col-sm-10">
+                <img class="avatar-question" src="{% static "img/picture.jpg" %}" alt="">
+                <input class="form-control" type="file" id="avatar">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-warning btn-send">Save</button>
+    </form>
+{% endblock content %}
+
