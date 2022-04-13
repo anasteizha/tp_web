@@ -57,7 +57,6 @@ class Question(models.Model):
     title = models.CharField(max_length=256)
     text = models.TextField()
     published_date = models.DateTimeField(auto_now_add=True)
-    rating = models.IntegerField(default=0)
 
     profile = models.ForeignKey(Profile, models.CASCADE)
     tags = models.ManyToManyField(Tag)
@@ -71,7 +70,6 @@ class Answer(models.Model):
     text = models.TextField()
     published_date = models.DateTimeField(auto_now_add=True)
     is_correct = models.BooleanField(default=False)
-    rating = models.IntegerField(default=0)
 
     profile = models.ForeignKey(Profile, models.CASCADE)
     question = models.ForeignKey(Question, models.CASCADE)
