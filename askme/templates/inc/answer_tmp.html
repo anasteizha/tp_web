@@ -1,13 +1,12 @@
 {% load static %}
 <div class="row question">
     <div class="col-2">
-        <img class="avatar-question" src="{% static "img/picture.jpg" %}" alt="">
-        <button type="button" class="btn btn-outline-success btn-sm">Like<br>20</button>
-        <button type="button" class="btn btn-outline-danger btn-sm"
-            style="margin-left: 2px">Dislike<br>10</button>
+        <img class="avatar-question" src="{% static 'img/picture.jpg' %}" alt="">
+        <button class="btn btn-light btn-sm"> <</button>
+        {{ answer.rating }}
+        <button class="btn btn-light btn-sm"> ></button>
     </div>
     <div class="col-10">
-        <h3>{{ answer.title }}</h3>
         <p>{{ answer.text }}</p>
 
         <div class="mb-3 form-check">

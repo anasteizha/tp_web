@@ -2,18 +2,18 @@
 <div class="row question">
     <div class="col-2">
         <img class="avatar-question" src="{% static "img/picture.jpg" %}" alt="">
-        <button type="button" class="btn btn-outline-success btn-sm">Like<br>20</button>
-        <button type="button" class="btn btn-outline-danger btn-sm"
-            style="margin-left: 2px">Dislike<br>10</button>
+        <button class="btn btn-light btn-sm"> <</button>
+        {{ question.rating }}
+        <button class="btn btn-light btn-sm"> ></button>
     </div>
     <div class="col-10">
         <h3><a href="{% url "question" question.number %}">{{ question.title }}</a></h3>
         <p>{{ question.text }}</p>
 
-        <a href="{% url "question" question.number %}" class="btn btn-light">Answers (2)</a>
+        <a href="{% url "question" question.number %}" class="btn btn-light">Answers ({{ question.num_answers }})</a>
         <span class="badge bg-dark" style="margin-left: 300px">Tags:</span>
-        {% for tag in question.tags %}
-            <a href="{% url "tag" tag %}">{{ tag }}</a>
+        {% for tag in question.tags.objects.all() %}
+            <a href="{% url "tag" tag %}">{{ tag.name }}</a>
         {% endfor %}
     </div>
 </div>

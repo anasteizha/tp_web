@@ -29,3 +29,5 @@ urlpatterns = [
     path('settings/', views.settings, name="settings")
 ]
 
+handler404 = views.page_not_found
+
