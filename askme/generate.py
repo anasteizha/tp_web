@@ -15,7 +15,6 @@ def generate_tags(num_records_per_query):
         yield Tag(name=f"tag {i + 1}")
 
 def create_tags():
-    print("Creating tags")
     Tag.objects.bulk_create(generate_tags(10001))
 
 def generate_profiles(num_records_per_query):
@@ -27,7 +26,6 @@ def generate_users():
         yield User(username=f'user_{i}')
 
 def create_profiles():
-    print("Creating profiles")
     User.objects.bulk_create(generate_users())
 
     Profile.objects.bulk_create(generate_profiles(10001))
@@ -37,7 +35,6 @@ def generate_rating_question(num_records_per_query, count):
         yield RatingQuestion(grade=1, question_id=(num_records_per_query * count + i) % 100010 + 1, profile_id=i + 1)
 
 def create_rating_question():
-    print("Creating ratings questions")
     for i in range(0, 1000000, 10001):
         RatingQuestion.objects.bulk_create(generate_rating_question(10001, i // 10001))
 
@@ -46,7 +43,6 @@ def generate_rating_answer(num_records_per_query, count):
         yield RatingAnswer(grade=1, answer_id=(num_records_per_query * count + i) % 1000100 + 1, profile_id=i + 1)
 
 def create_rating_answer():
-    print("Creating ratings answers")
     for i in range(0, 1000000, 10001):
         RatingAnswer.objects.bulk_create(generate_rating_answer(10001, i // 10001))
 
@@ -57,7 +53,6 @@ def generate_answers(num_records_per_query, count):
         question_id=(num_records_per_query * count + i) % 100010 + 1)
 
 def create_answers():
-    print("Creating answers")
     for i in range(0, 1000000, 10001):
         Answer.objects.bulk_create(generate_answers(10001, i // 10001))
 
