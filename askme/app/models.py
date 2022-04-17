@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models import Count
+from django.forms import IntegerField
 
 GRADE = [
     (1, 'Like'),
@@ -17,19 +18,19 @@ class AnswerManager(models.Manager):
 
 class QuestionManager(models.Manager):
     def new_questions(self):
-        return self.num_answers().order_by('-published_date')[:50]
+        return self.all_with_num_answers().order_by('-published_date')
 
     def hot_questions(self):
-        return self.num_answers().order_by('-rating')[:50]
+        return self.all_with_num_answers().order_by('-rating')[:50]
 
-    def num_answers(self):
+    def all_with_num_answers(self):
         return self.annotate(num_answers=Count('answer'))
 
     def tag_questions(self, tag_name):
-        return self.filter(tags__name=tag_name)
+        return self.all_with_num_answers().filter(tags__name=tag_name)
 
     def get_by_id(self, question_id):
-        return self.get(id=question_id)
+        return self.all_with_num_answers().get(id=question_id)
 
 class ProfileManager(models.Manager):
     def best_members(self):
@@ -57,6 +58,7 @@ class Question(models.Model):
     title = models.CharField(max_length=256)
     text = models.TextField()
     published_date = models.DateTimeField(auto_now_add=True)
+    rating = models.IntegerField(default=0)
 
     profile = models.ForeignKey(Profile, models.CASCADE)
     tags = models.ManyToManyField(Tag)
@@ -70,6 +72,7 @@ class Answer(models.Model):
     text = models.TextField()
     published_date = models.DateTimeField(auto_now_add=True)
     is_correct = models.BooleanField(default=False)
+    rating = models.IntegerField(default=0)
 
     profile = models.ForeignKey(Profile, models.CASCADE)
     question = models.ForeignKey(Question, models.CASCADE)

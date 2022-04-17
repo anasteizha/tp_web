@@ -12,7 +12,7 @@
 
         <a href="{% url "question" question.id %}" class="btn btn-light">Answers ({{ question.num_answers }})</a>
         <span class="badge bg-dark" style="margin-left: 300px">Tags:</span>
-        {% for tag in question.tags.objects.all %}
+        {% for tag in question.tags.all %}
             <a href="{% url "tag" tag %}">{{ tag.name }}</a>
         {% endfor %}
     </div>

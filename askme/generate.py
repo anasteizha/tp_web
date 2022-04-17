@@ -66,16 +66,30 @@ def create_questions():
     for i in range(0, 100000, 10001):
         Question.objects.bulk_create(generate_questions(10001, i // 10001))
 
-    for i in range(100010):
-        #Question.objects.all().get(id=i + 1).tags.add(Tag.objects.get(id=i % 9999 + 3))
-        #Question.objects.all().get(id=i + 1).tags.add(Tag.objects.get(id=i % 10000 + 2))
+    for i in range(0, 100010):
+        Question.objects.get(id=i + 1).tags.add(Tag.objects.get(id=i % 9999 + 3))
+        Question.objects.get(id=i + 1).tags.add(Tag.objects.get(id=i % 10000 + 2))
         Question.objects.get(id=i + 1).tags.add(Tag.objects.get(id=i % 10001 + 1))
 
+def update_questions(count):
+    for i in range(10001):
+        question = Question.objects.get(id=10001 * count + i + 1)
+        question.rating = RatingQuestion.objects.filter(question_id=question.id).aggregate(total_rating=Sum('grade')).get("total_rating")
+        yield question
+
 def count_rating_questions():
-    Question.objects.annotate(rating=Sum('RatingQuestion__grade'))
+    for i in range(0, 1000000, 10001):
+        Question.objects.bulk_update(update_questions(i // 10001), ['rating'])
+
+def update_answers(count):
+    for i in range(10001):
+        answer = Answer.objects.get(id=10001 * count + i + 1)
+        answer.rating = RatingAnswer.objects.filter(answer_id=answer.id).aggregate(total_rating=Sum('grade')).get("total_rating")
+        yield answer
 
 def count_rating_answers():
-    Answer.objects.annotate(rating=Sum('RatingAnswer__grade'))
+    for i in range(0, 1000000, 10001):
+        Answer.objects.bulk_update(update_answers(i // 10001), ['rating'])
 
 def create_records():
     create_tags()

@@ -6,7 +6,7 @@ from pagination import paginate
 # Create your views here.
 
 def index(request):
-    context = {"page_obj": paginate(Question.objects.all(), request),
+    context = {"page_obj": paginate(Question.objects.all_with_num_answers(), request),
             "popular_tags": Tag.objects.popular_tags(),
             "best_members": Profile.objects.best_members()}
 
