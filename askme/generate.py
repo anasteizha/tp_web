@@ -9,6 +9,7 @@ django.setup()
 from django.contrib.auth.models import User
 from django.db.models import Sum
 from app.models import *
+from django.core.exceptions import ObjectDoesNotExist
 
 def generate_tags(num_records_per_query):
     for i in range(num_records_per_query):
@@ -32,7 +33,10 @@ def create_profiles():
 
 def generate_rating_question(num_records_per_query, count):
     for i in range(num_records_per_query):
-        yield RatingQuestion(grade=1, question_id=(num_records_per_query * count + i) % 100010 + 1, profile_id=i + 1)
+        try:
+            RatingQuestion.objects.get(grade=1, question_id=(num_records_per_query * count + i) % 100010 + 1, profile_id=i + 1)
+        except ObjectDoesNotExist:
+            yield RatingQuestion(grade=1, question_id=(num_records_per_query * count + i) % 100010 + 1, profile_id=i + 1)
 
 def create_rating_question():
     for i in range(0, 1000000, 10001):
@@ -40,7 +44,10 @@ def create_rating_question():
 
 def generate_rating_answer(num_records_per_query, count):
     for i in range(num_records_per_query):
-        yield RatingAnswer(grade=1, answer_id=(num_records_per_query * count + i) % 1000100 + 1, profile_id=i + 1)
+        try:
+            RatingAnswer.objects.get(grade=1, answer_id=(num_records_per_query * count + i) % 1000100 + 1, profile_id=i + 1)
+        except ObjectDoesNotExist:
+            yield RatingAnswer(grade=1, answer_id=(num_records_per_query * count + i) % 1000100 + 1, profile_id=i + 1)
 
 def create_rating_answer():
     for i in range(0, 1000000, 10001):

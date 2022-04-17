@@ -10,7 +10,11 @@
         <p>{{ answer.text }}</p>
 
         <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" id="choose">
+            {% if answer.is_correct %}
+                <input type="checkbox" class="form-check-input" id="choose" checked>
+            {% else %}
+                <input type="checkbox" class="form-check-input" id="choose">
+            {% endif %}
             <label class="form-check-label" for="choose">Correct!</label>
         </div>
     </div>
