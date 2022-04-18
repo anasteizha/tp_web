@@ -84,14 +84,8 @@ class RatingQuestion(models.Model):
     question = models.ForeignKey(Question, models.CASCADE)
     profile = models.ForeignKey(Profile, models.CASCADE)
 
-    class Meta:
-        unique_together = ['question', 'profile', 'grade']
-
 class RatingAnswer(models.Model):
     grade = models.IntegerField(choices=GRADE)
     answer = models.ForeignKey(Answer, models.CASCADE)
     profile = models.ForeignKey(Profile, models.CASCADE)
-
-    class Meta:
-        unique_together = ['answer', 'profile', 'grade']
 

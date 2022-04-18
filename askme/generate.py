@@ -9,7 +9,8 @@ django.setup()
 from django.contrib.auth.models import User
 from django.db.models import Sum
 from app.models import *
-from django.core.exceptions import ObjectDoesNotExist
+
+from random import randint
 
 def generate_tags(num_records_per_query):
     for i in range(num_records_per_query):
@@ -31,23 +32,29 @@ def create_profiles():
 
     Profile.objects.bulk_create(generate_profiles(10001))
 
-def generate_rating_question(num_records_per_query, count):
+def generate_rating_question(num_records_per_query):
     for i in range(num_records_per_query):
-        try:
-            RatingQuestion.objects.get(grade=1, question_id=(num_records_per_query * count + i) % 100010 + 1, profile_id=i + 1)
-        except ObjectDoesNotExist:
-            yield RatingQuestion(grade=1, question_id=(num_records_per_query * count + i) % 100010 + 1, profile_id=i + 1)
+        q_id = randint(1, 100010)
+        p_id = randint(1, 10001)
+
+        if not RatingQuestion.objects.filter(grade=1, question_id=q_id, profile_id=p_id).exists():
+            yield RatingQuestion(grade=1, question_id=q_id, profile_id=p_id)
+        else:
+            i -= 1
 
 def create_rating_question():
     for i in range(0, 1000000, 10001):
-        RatingQuestion.objects.bulk_create(generate_rating_question(10001, i // 10001))
+        RatingQuestion.objects.bulk_create(generate_rating_question(10001))
 
 def generate_rating_answer(num_records_per_query, count):
     for i in range(num_records_per_query):
-        try:
-            RatingAnswer.objects.get(grade=1, answer_id=(num_records_per_query * count + i) % 1000100 + 1, profile_id=i + 1)
-        except ObjectDoesNotExist:
-            yield RatingAnswer(grade=1, answer_id=(num_records_per_query * count + i) % 1000100 + 1, profile_id=i + 1)
+        a_id = randint(1, 1000100)
+        p_id = randint(1, 10001)
+
+        if not RatingAnswer.objects.filter(grade=1, answer_id=a_id, profile_id=p_id).exists():
+            yield RatingAnswer(grade=1, answer_id=a_id, profile_id=p_id)
+        else:
+            i -= 1
 
 def create_rating_answer():
     for i in range(0, 1000000, 10001):
@@ -105,8 +112,8 @@ def create_records():
     create_answers()
     create_rating_question()
     create_rating_answer()
-    count_rating_questions()
     count_rating_answers()
+    count_rating_questions()
 
 if __name__ == "__main__":
     create_records()
