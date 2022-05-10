@@ -13,19 +13,19 @@
         Wrong password.
       </div>
     </div>
-    <form>
+    <form action="/login" method="get">
       <div class="mb-3 col-6">
         <label for="login" class="form-label">Login</label>
-        <input type="text" class="form-control" id="login" placeholder="Enter your login" required>
+        <input name="login" type="email" class="form-control" id="login" placeholder="Enter your login" required>
       </div>
       <div class="mb-3 col-6">
         <label for="password" class="form-label">Password</label>
-        <input type="password" class="form-control" id="password" placeholder="Enter your password" required>
+        <input name="password" type="password" class="form-control" id="password" placeholder="Enter your password" required>
       </div>
       <div class="mb-3">
         <a href="{% url "signup" %}">Create new account</a>
       </div>
-      <button type="submit" class="btn btn-warning btn-send">Log in</button>
+      <button class="btn btn-warning btn-send">Log in</button>
     </form>
   </div>
 {% endblock content %}

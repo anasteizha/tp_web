@@ -78,7 +78,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', 
         'NAME': 'askmeDatabase',
-        'USER': 'anastasya',
+        'USER': 'anastasia',
         'PASSWORD': '123',
         'HOST': 'localhost',
         'PORT': '',
