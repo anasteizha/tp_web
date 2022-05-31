@@ -1,5 +1,6 @@
 {% extends "inc/base.html" %}
 {% load static %}
+{% load bootstrap4 %}
 
 {% block navbar %}
     {% include "inc/authorized_navbar.html" %}
@@ -18,10 +19,12 @@
 
     <hr size="4" style="margin-top: 50px">
     <div class='row form-ans'>
-        <form id="new-answer" class="enter-answer">
+        <form id="new-answer" class="enter-answer" action="/question/{{ question.id }}/" method="post">
             <div class="mb-3">
-                <textarea class="form-control form-control-lg" id="TextForm"
-                    placeholder="Enter your answer here..." rows="4"></textarea>
+                <!-- <textarea class="form-control form-control-lg" id="TextForm"
+                    placeholder="Enter your answer here..." rows="4"></textarea> -->
+                {% csrf_token %}
+                {% bootstrap_form form %}
                 <button class="btn btn-outline-warning btn-send" type="submit">Answer</button>
             </div>
         </form>

@@ -1,5 +1,6 @@
 {% extends "inc/base.html" %}
 {% load static %}
+{% load bootstrap4 %}
 
 {% block navbar %}
   {% include "inc/unauthorized_navbar.html" %}
@@ -8,20 +9,9 @@
 {% block content %}
   <div class="col-7" style="margin-left: 150px">
     <h2 class="mt-5">Log in</h2>
-    <div class="col-5">
-      <div class="alert alert-danger" role="alert">
-        Wrong password.
-      </div>
-    </div>
-    <form action="/login" method="get">
-      <div class="mb-3 col-6">
-        <label for="login" class="form-label">Login</label>
-        <input name="login" type="email" class="form-control" id="login" placeholder="Enter your login" required>
-      </div>
-      <div class="mb-3 col-6">
-        <label for="password" class="form-label">Password</label>
-        <input name="password" type="password" class="form-control" id="password" placeholder="Enter your password" required>
-      </div>
+    <form action="/login/" method="post">
+      {% csrf_token %}
+      {% bootstrap_form form %}
       <div class="mb-3">
         <a href="{% url "signup" %}">Create new account</a>
       </div>

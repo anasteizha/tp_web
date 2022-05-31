@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'bootstrap4'
 ]
 
 MIDDLEWARE = [
@@ -133,4 +134,6 @@ STATICFILES_DIRS = [
 
 MEDIA_ROOT = "uploads/"
 MEDIA_URL = "/uploads/"
+
+DEFAULT_AVATAR = "img/picture.jpg"
 
